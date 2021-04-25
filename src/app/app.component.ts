@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VideoService } from './services/video.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-person-detector';
+
+  constructor(private VideoService: VideoService) {}
+
+  videos: any;
+  
+  ngOnInit(): void {
+    this.VideoService.getVideos().subscribe((videos: any) => {
+      this.videos = videos;   
+    })
+  }
 }
