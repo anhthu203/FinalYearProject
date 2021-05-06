@@ -1,6 +1,6 @@
-<div *ngFor="let video of videos">
-  <video id="cam1" autoplay loop width="640" height="480" src="./assets/output_videos/{{ video }}" type="video/mp4"></video>
+<h1>My home camera</h1>
+
+<div *ngFor="let video of videos; let i = index">
+  <h3>Cam {{i+1}}</h3>
+  <video id="cam1" autoplay loop width="640" height="480" src="./assets/{{ video }}" type="video/mp4"></video>
 </div>
-
-
-

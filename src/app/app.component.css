@@ -1,0 +1,9 @@
+div {
+    display: inline-block;
+    width: 30%;
+}
+
+video#cam1 {
+    width: 85% !important;
+    height: 80% !important;
+}

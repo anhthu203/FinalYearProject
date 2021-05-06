@@ -14,7 +14,7 @@ app.listen(3000, () => {
 
 // Read files in assets/output_videos
 app.get('/videos', (req, res) => {
-    const vid_dir = 'src/assets/output_videos';
+    const vid_dir = 'src/assets';
     fs.readdir(vid_dir, (err, videos) => {
         res.send(videos);
     })
