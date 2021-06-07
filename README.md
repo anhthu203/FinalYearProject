@@ -30,10 +30,10 @@ The next thing to do is to generate training data to feed to the models. Tensorf
 
 The label map is used to tell the model what each object is by defining a mapping of class names to class ID numbers. The label map ID numbers should be the same as what is defined in the generate_tfrecord.py file. I used a text editor to create a new file and save it as labelmap.pbtxt in the “training” folder. Since my dataset only has one class, the labelmap.pbtxt file is as below.
 
-item {
-  id: 1
-  name: 'person'
-}
+item {  
+  id: 1  
+  name: 'person'  
+}  
 
 After creating a label map, it is time to configure the model for training. State-of-the-art models’ configuration on Tensorflow Object Detection API have already been optimized by the developers so I do not have to make any changes to the hyper parameters such as batch size, learning rate, epochs, etc. What I need to do is to provide paths to the labelmap, checkpoint and TFRecord files that I just generated on the previous step.
 
