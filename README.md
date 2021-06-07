@@ -1,27 +1,5 @@
-# AngularPersonDetector
+Trespassing is a disturbing issue which not only affects people’s assets but may also costs theirs lives. When people go out, their house will be left empty with no one to watch over the house. Therefore, this is a perfect opportunity for burglars and trespassers to enter their houses. One way of preventing it is to install cameras inside and outside of the house. However, these cameras can only record what already happened, so when a burglary happens, it can help identify the burglar but not actually prevent it from happening. Some modern IP cameras are integrated with motion sensors that can detect anything that moves, and they can stream what they recorded to a mobile application so that house’s owner can see what is happening in real time remotely. Nonetheless, not everyone has the time to watch over their house all the time and the motion sensors can sometimes mistake for something else that also moves like a cat or a dog. Due to the increase in the number of cameras and the lack of human resources to monitor them manually, security breaches and trespassing are still occurring. Therefore, to enhance surveillance and avoid unauthorized access, cameras should be integrated with smart system that can detect and track human’s movement in real time at an acceptable speed.
+In this project, I have created a trespasser detector system that connects a camera (webcam) to detect and track people’s movement in real time. If a trespasser is spotted, an alert email will be sent to the house’s owner along with a screenshot captured by the camera. The difficult task is that from a computer perspective, it is heavily affected by a wide range of possible appearance, pose, background and lighting of a person. Thus, the detector needs to be feed with a variety of data to be able to detect in these special conditions. 
+The detector is built from Single Shot Detector MobileNet v1, a lightweight state-of-the-art deep neural network model that exchanges accuracy for speed, and speed is what essential to be able to run in real time on a low processing-power machine.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![image](https://user-images.githubusercontent.com/46740045/121009902-e6832480-c7be-11eb-8d11-e9dd6883bd64.png)
