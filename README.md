@@ -5,28 +5,44 @@ In this project, I have created a trespasser detector system that connects a cam
 
 The detector is built from Single Shot Detector MobileNet v1, a lightweight state-of-the-art deep neural network model that exchanges accuracy for speed, and speed is what essential to be able to run in real time on a low processing-power machine.  
 
-# 2. Data collecting and training process
+# 2. Tools & technologies
 
-### 2.1 Collect images for datasets
+### 2.1 IDEs
+- Visual Studio Code
+- Pycharm
+
+### 2.2 Programming languages
+- Python
+- Javascript
+
+### 2.3 Libararies & Frameworks
+- OpenCV
+- Tensorflow
+- Angular
+- NodeJS + ExpressJS
+
+# 3. Data collecting and training process
+
+### 3.1 Collect images for datasets
 
 The dataset contains 270 images in total, collected from Kaggle. It will be divided into 2 separated sets in the ratio of 8 to 2. One is used for training and the other is used for testing. Thus, the training dataset contains 216 images in total while the testing dataset only contains 54 images. All images are colored and have the extension name of “.png”. They are all kept as 256x256 by size to maintain a consistent training pattern and prevent bias, which is likely to happen if some of the images in the dataset is different from the others. 
 
 ![image](https://user-images.githubusercontent.com/46740045/121011502-e4ba6080-c7c0-11eb-9036-fd2f28da1733.png)
 
-### 2.2 Label images
+### 3.2 Label images
 
 The model need to know the name of the object and the location of the object in an image to be able to learn to recognize and detect the object. Therefore, we need to provide it a “map” so that when the model observes an image, it knows what the objects it needs to detect are and where these objects are in the image. To label image, I will use a tool called LabelImg.  
 
 ![image](https://user-images.githubusercontent.com/46740045/121012198-aec9ac00-c7c1-11eb-9fa8-d68dc2e75fb1.png)
 
-### 2.3 Generate training data
+### 3.3 Generate training data
 
 The next thing to do is to generate training data to feed to the models. Tensorflow Object Detection API requires TFRecord file format in order to start training so the dataset needs to be convert to TFRecord file. Before that, the annotations that have just been created in the previous step must be gathered and converted to CSV file using the xml_to_csv script. Both the training and testing dataset will generate a CSV file separatedly. When it is done, a new CSV file is created containing all the essential details of the detected objects needed to train the model.
 
 ![image](https://user-images.githubusercontent.com/46740045/121012473-f0f2ed80-c7c1-11eb-814c-d974cc8bcbf8.png)
 
 
-### 2.4 Create label map and configure training
+### 3.4 Create label map and configure training
 
 The label map is used to tell the model what each object is by defining a mapping of class names to class ID numbers. The label map ID numbers should be the same as what is defined in the generate_tfrecord.py file. I used a text editor to create a new file and save it as labelmap.pbtxt in the “training” folder. Since my dataset only has one class, the labelmap.pbtxt file is as below.
 
@@ -37,7 +53,7 @@ item {
 
 After creating a label map, it is time to configure the model for training. State-of-the-art models’ configuration on Tensorflow Object Detection API have already been optimized by the developers so I do not have to make any changes to the hyper parameters such as batch size, learning rate, epochs, etc. What I need to do is to provide paths to the labelmap, checkpoint and TFRecord files that I just generated on the previous step.
 
-### 2.5 Train model
+### 3.5 Train model
 
 The model training process can take days running in order to achieve a good model with high accuracy if trained on a CPU. Nevertheless, the process can be boosted if the model is trained on a GPU or a cloud sever such as Google Cloud, Firebase, etc., both of which require some investments and will contribute to the increase in project’s budget. Therefore, although training on a CPU is slow, it is affordable for a student like myself.
 
@@ -46,7 +62,7 @@ Each step in the training process represents the time a batch of images is passe
 ![image](https://user-images.githubusercontent.com/46740045/121012676-2a2b5d80-c7c2-11eb-9b8a-3742d644fa05.png)
 
 
-# 3. Implementation
+# 4. Implementation
 
 The application operates as described in the following diagram: 
 
@@ -63,3 +79,9 @@ The alert email sent to house’s owner about trespassing. It also sends along w
 After receiving the mail, the house’s owner should go to the website to check the cameras. The website only displays recorded videos but my intention at first was to build a website that can stream directly from the cameras. However, due to time restriction, I could not turn this idea into practice but it might as well be one of the improvement in the future.
 
 ![image](https://user-images.githubusercontent.com/46740045/121010586-ce5fd500-c7bf-11eb-8ae1-2c392111f844.png)
+
+# 5. Conclusion
+
+In conclusion, my security system has successfully solved the problem of trespassing mentioned in Chapter 1. Hopefully, it will be deployed in the future to enhance home security so that no one has to be fear of leaving their house empty. Although it still has some limitations such as it cannot detect if a person is too far away and sometimes predicted bounding boxes do not fit the person entirely. This is because the model has traded its accuracy for more speed but that does not mean SSD model cannot predict correctly. These limitations can be overcome if I train the model a little bit longer and provide the model a more diverse dataset.
+
+It is not possible for me to connect my computer to a surveillance camera to stream the video directly from the camera feed yet. I have tried done it before but failed because the manufacture of the camera does not allow RTSP (Real Time Streaming Protocol) connection since it may risk security breaching. Hopefully, in the future, I can find a way to connect to my house IP camera without risking security breaching. Furthermore, I would like to increase the model’s accuracy by training it a little longer so that it can detect people from far away since surveillance cameras are usually placed in far distance with the people.
